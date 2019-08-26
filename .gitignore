@@ -4,6 +4,9 @@
 # Log file
 *.log
 
+# Assignment Document
+*.pdf
+
 # BlueJ files
 *.ctxt
 
