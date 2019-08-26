@@ -76,6 +76,45 @@ public class SinglyLinkedList<T> implements Iterable<T> {
         size++;
     }
 
+    public void addFirst(T x){
+        addFirst(new Entry<T>(x, null));
+    }
+
+    private void addFirst(Entry<T> ent){
+        ent.next = head;
+        head = ent;
+        size++;
+    }
+
+    public T removeFirst(){
+        if(head==null) return null;
+        head = head.next;
+        return head.element;
+    }
+
+    public T remove(T x){
+
+        Entry<T> ent = head;
+        Entry<T> prev = null;
+        if(ent==null){
+            throw new NoSuchElementException();
+        }
+        while(ent!=null){
+            if(ent.element==x){
+                if(prev==null){
+                    return removeFirst();
+                }
+                prev.next = ent.next;
+                ent.next = null;
+                return ent.element;
+            }
+            ent = ent.next;
+            prev = ent;
+        }
+
+        return x;
+    }
+
     public void printList() {
         System.out.print(this.size + ": ");
         for (T item : this) {
