@@ -23,44 +23,6 @@ public class SinglyLinkedList<T> implements Iterable<T> {
         size = 0;
     }
 
-    public static void main(String[] args) throws NoSuchElementException {
-        int n = 10;
-        if (args.length > 0) {
-            n = Integer.parseInt(args[0]);
-        }
-
-        SinglyLinkedList<Integer> lst = new SinglyLinkedList<>();
-        for (int i = 1; i <= n; i++) {
-            lst.add(Integer.valueOf(i));
-        }
-        lst.printList();
-
-        Iterator<Integer> it = lst.iterator();
-        Scanner in = new Scanner(System.in);
-        whileloop:
-        while (in.hasNext()) {
-            int com = in.nextInt();
-            switch (com) {
-                case 1:  // Move to next element and print it
-                    if (it.hasNext()) {
-                        System.out.println(it.next());
-                    } else {
-                        break whileloop;
-                    }
-                    break;
-                case 2:  // Remove element
-                    it.remove();
-                    lst.printList();
-                    break;
-                default:  // Exit loop
-                    break whileloop;
-            }
-        }
-        lst.printList();
-        lst.unzip();
-        lst.printList();
-    }
-
     public Iterator<T> iterator() {
         return new SLLIterator();
     }
@@ -124,6 +86,18 @@ public class SinglyLinkedList<T> implements Iterable<T> {
         System.out.println();
     }
 
+    public void printValues(Entry<T> ent){
+        if(ent==null){
+            System.out.println("empty");
+        }
+        else {
+            while(ent!=null){
+                System.out.print(ent.element+" ");
+                ent = ent.next;
+            }
+        }
+    }
+
     // Rearrange the elements of the list by linking the elements at even index
     // followed by the elements at odd index. Implemented by rearranging pointers
     // of existing elements without allocating any new elements.
@@ -159,6 +133,21 @@ public class SinglyLinkedList<T> implements Iterable<T> {
         tail1.next = null;
         // Update the tail of the list
         tail = tail1;
+    }
+
+    public Entry<T> reverseList(){
+        Entry<T> ent = head;
+        Entry<T> prev=null, next=null;
+        if(ent==null || ent.next==null){
+            return ent;
+        }
+        while(ent!=null){
+            next = ent.next;
+            ent.next = prev;
+            prev = ent;
+            ent = next;
+        }
+        return prev;
     }
 
     /**
@@ -213,4 +202,47 @@ public class SinglyLinkedList<T> implements Iterable<T> {
             size--;
         }
     }  // end of class SLLIterator
+
+    public static void main(String[] args) throws NoSuchElementException {
+        int n = 10;
+        if (args.length > 0) {
+            n = Integer.parseInt(args[0]);
+        }
+
+        SinglyLinkedList<Integer> lst = new SinglyLinkedList<>();
+        for (int i = 1; i <= n; i++) {
+            lst.add(Integer.valueOf(i));
+        }
+        lst.printList();
+
+        Entry<Integer> reversedHead = lst.reverseList();
+        lst.printValues(reversedHead);
+
+        Iterator<Integer> it = lst.iterator();
+        Scanner in = new Scanner(System.in);
+        whileloop:
+        while (in.hasNext()) {
+            int com = in.nextInt();
+            switch (com) {
+                case 1:  // Move to next element and print it
+                    if (it.hasNext()) {
+                        System.out.println(it.next());
+                    } else {
+                        break whileloop;
+                    }
+                    break;
+                case 2:  // Remove element
+                    it.remove();
+                    lst.printList();
+                    break;
+                default:  // Exit loop
+                    break whileloop;
+            }
+        }
+        lst.printList();
+        lst.unzip();
+        lst.printList();
+    }
+
+
 }
