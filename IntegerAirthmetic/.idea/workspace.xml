@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b2d5ce4b-8c77-44d3-b420-a55c220c276f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/gxg170000/ShuntingYard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="5155d3ed-9d6f-4dc7-ae21-5cd54454cb97" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../ShuntingYardAlgorithm/src/gxg170000/ShuntingYard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BoundedQueue/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../BoundedQueue/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BoundedQueue/src/gxg170000/BoundedQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BoundedQueue/src/gxg170000/BoundedQueue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ShuntingYardAlgorithm/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ShuntingYardAlgorithm/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,7 +19,33 @@
     <option name="delegatedBuild" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/gxg170000/Num.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="465">
+              <caret line="31" selection-start-line="31" selection-end-line="31" />
+              <folding>
+                <element signature="e#1043#1044#0" expanded="true" />
+                <element signature="e#1113#1114#0" expanded="true" />
+                <element signature="e#1188#1189#0" expanded="true" />
+                <element signature="e#1262#1263#0" expanded="true" />
+                <element signature="e#1365#1366#0" expanded="true" />
+                <element signature="e#1480#1481#0" expanded="true" />
+                <element signature="e#1568#1569#0" expanded="true" />
+                <element signature="e#1663#1664#0" expanded="true" />
+                <element signature="e#1841#1842#0" expanded="true" />
+                <element signature="e#2158#2159#0" expanded="true" />
+                <element signature="e#2330#2331#0" expanded="true" />
+                <element signature="e#2428#2429#0" expanded="true" />
+                <element signature="e#2713#2714#0" expanded="true" />
+                <element signature="e#3004#3005#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -32,12 +60,18 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/gxg170000/ShuntingYard.java" />
+        <option value="$PROJECT_DIR$/src/gxg170000/Num.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="width" value="1680" />
     <option name="height" value="1050" />
   </component>
@@ -47,24 +81,22 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="ShuntingYard" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ShuntingYardAlgorithm" type="462c0819:PsiDirectoryNode" />
+              <item name="IntegerAirthmetic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="IntegerAirthmetic" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -83,9 +115,9 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="ShuntingYard" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="gxg170000.ShuntingYard" />
-      <module name="ShuntingYardAlgorithm" />
+    <configuration name="Num" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="gxg170000.Num" />
+      <module name="IntegerAirthmetic" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="gxg170000.*" />
@@ -98,7 +130,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ShuntingYard" />
+        <item itemvalue="Application.Num" />
       </list>
     </recent_temporary>
   </component>
@@ -107,38 +139,39 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b2d5ce4b-8c77-44d3-b420-a55c220c276f" name="Default Changelist" comment="" />
-      <created>1567382390879</created>
+      <changelist id="5155d3ed-9d6f-4dc7-ae21-5cd54454cb97" name="Default Changelist" comment="" />
+      <created>1567877250143</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1567382390879</updated>
-      <workItem from="1567382392042" duration="3195000" />
+      <updated>1567877250143</updated>
+      <workItem from="1567877252365" duration="2115000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3195000" />
+    <option name="totallyTimeSpent" value="2115000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <frame x="0" y="0" width="1680" height="1050" extended-state="1" />
+    <editor active="true" />
     <layout>
       <window_info id="Image Layers" />
       <window_info id="Designer" />
       <window_info id="UI Designer" />
       <window_info id="Capture Tool" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16727717" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24969475" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" weight="0.17959183" />
+      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.28601253" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.1743215" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32959184" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.27142859" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -157,19 +190,25 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/src/gxg170000/Num.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="13" lean-forward="true" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gxg170000/ShuntingYard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="50" column="21" lean-forward="true" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
+        <state relative-caret-position="465">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1043#1044#0" expanded="true" />
+            <element signature="e#1113#1114#0" expanded="true" />
+            <element signature="e#1188#1189#0" expanded="true" />
+            <element signature="e#1262#1263#0" expanded="true" />
+            <element signature="e#1365#1366#0" expanded="true" />
+            <element signature="e#1480#1481#0" expanded="true" />
+            <element signature="e#1568#1569#0" expanded="true" />
+            <element signature="e#1663#1664#0" expanded="true" />
+            <element signature="e#1841#1842#0" expanded="true" />
+            <element signature="e#2158#2159#0" expanded="true" />
+            <element signature="e#2330#2331#0" expanded="true" />
+            <element signature="e#2428#2429#0" expanded="true" />
+            <element signature="e#2713#2714#0" expanded="true" />
+            <element signature="e#3004#3005#0" expanded="true" />
           </folding>
         </state>
       </provider>
