@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5155d3ed-9d6f-4dc7-ae21-5cd54454cb97" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/gxg170000/Num.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gxg170000/Num.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MergeSort/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MergeSort/MergeSort.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MergeSort/src/gxg170000/MergeSort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,8 +22,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/gxg170000/Num.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="667">
-              <caret line="274" column="34" selection-start-line="274" selection-start-column="34" selection-end-line="274" selection-end-column="34" />
+            <state relative-caret-position="274">
+              <caret line="217" column="39" lean-forward="true" selection-start-line="217" selection-start-column="39" selection-end-line="217" selection-end-column="39" />
               <folding>
                 <element signature="method#Num#1;class#Num#0" />
                 <element signature="method#reverse#0;class#Num#0" />
@@ -28,6 +31,8 @@
                 <element signature="e#1136#1137#0" expanded="true" />
                 <element signature="method#add#0;class#Num#0" />
                 <element signature="method#subtract#0;class#Num#0" />
+                <element signature="method#product#0;class#Num#0" />
+                <element signature="method#power#0;class#Num#0" />
                 <element signature="e#1542#1570#1" />
                 <element signature="e#4669#4670#0" expanded="true" />
                 <element signature="e#1630#1658#1" />
@@ -70,14 +75,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="width" value="1680" />
     <option name="height" value="1050" />
   </component>
@@ -166,12 +164,12 @@
       <updated>1567877250143</updated>
       <workItem from="1567877252365" duration="2115000" />
       <workItem from="1568007472087" duration="10000" />
-      <workItem from="1568047605968" duration="33102000" />
+      <workItem from="1568047605968" duration="33928000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35227000" />
+    <option name="totallyTimeSpent" value="36053000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -183,10 +181,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <frame x="0" y="0" width="1680" height="1050" extended-state="1" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.08791209" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.08791209" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -195,7 +193,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.17959183" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.18371607" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.26530612" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -220,23 +218,14 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/gxg170000/Num.java</url>
-          <line>121</line>
-          <properties />
-          <option name="timeStamp" value="46" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/gxg170000/Num.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="667">
-          <caret line="274" column="34" selection-start-line="274" selection-start-column="34" selection-end-line="274" selection-end-column="34" />
+        <state relative-caret-position="274">
+          <caret line="217" column="39" lean-forward="true" selection-start-line="217" selection-start-column="39" selection-end-line="217" selection-end-column="39" />
           <folding>
             <element signature="method#Num#1;class#Num#0" />
             <element signature="method#reverse#0;class#Num#0" />
@@ -244,6 +233,8 @@
             <element signature="e#1136#1137#0" expanded="true" />
             <element signature="method#add#0;class#Num#0" />
             <element signature="method#subtract#0;class#Num#0" />
+            <element signature="method#product#0;class#Num#0" />
+            <element signature="method#power#0;class#Num#0" />
             <element signature="e#1542#1570#1" />
             <element signature="e#4669#4670#0" expanded="true" />
             <element signature="e#1630#1658#1" />
