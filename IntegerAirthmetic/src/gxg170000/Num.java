@@ -1,11 +1,13 @@
 package gxg170000;
 
 public class Num {
-    static long defaultBase = 1000;  // Change as needed
-    long base = 1000;  // Change as needed
+    static long defaultBase = 100;  // Change as needed
+    long base = 100;  // Change as needed
     long[] arr;  // array to store arbitrarily large integers
     boolean isNegative;  // boolean flag to represent negative numbers
     int len;  // actual number of elements of array that are used;  number is stored in arr[0..len-1]
+
+    public Num(){}
 
     public Num(String s) {
         int count = 0;
@@ -17,7 +19,7 @@ public class Num {
 
         String reversedString = reverse(s);
 
-        arr = new long[(s.length()/count) +1];
+        arr = new long[(int)Math.ceil((float)s.length()/count)];
 
         int j=0;
 
@@ -26,7 +28,6 @@ public class Num {
             arr[j] =Long.parseLong(reverse(reversedString.substring(i, Math.min(s.length(), i+count))));
             j++;
         }
-
         len = arr.length;
     }
 
@@ -76,24 +77,45 @@ public class Num {
     }
 
     public static Num subtract(Num a, Num b) {
-//        int l1 = a.len;
-//        int l2 = b.len;
-//        long temp = 0;
-//        long[] res = new long[Math.max(l1,l2)];
-//        for(int i=0;i<Math.max(l1,l2);i++){
-//            if(a.arr[i]<b.arr[i]){
-//                for(int j=i-1; j>0;j--){
-//
-//                }
-//            }
-//            else {
-//                res[i] = a.arr[i] - b.arr[i];
-//                temp = 0;
-//            }
-//        }
-//
-//        System.out.print("over");
-        return null;
+        boolean negative = false;
+        long carry = 0;
+        Num big, small;
+        if(compare(a,b)==-1){
+            negative = true;
+            big = b;
+            small = a;
+        }
+        else{
+            big = a;
+            small = b;
+        }
+        long[] res = new long[big.len];
+        int k = 0;
+        for(int i=0;i<big.len;i++){
+            long temp = 0;
+            if(i<small.len){
+                temp = big.arr[i] - small.arr[i] - carry;
+            }
+            else {
+                temp = big.arr[i] - carry;
+            }
+            if(temp>=0){
+                res[k] = temp;
+                carry = 0;
+            }
+            else{
+                temp = temp + a.base;
+                res[k] = temp;
+                carry = 1;
+            }
+            k++;
+        }
+        Num subtractResult = new Num();
+        subtractResult.base = a.base;
+        subtractResult.len = res.length;
+        subtractResult.arr = res;
+        subtractResult.isNegative = negative;
+        return subtractResult;
     }
 
     public static Num product(Num a, Num b) {
@@ -102,8 +124,10 @@ public class Num {
         int l3 = Math.max(l1,l2);
         int l4 = Math.min(l1,l2);
         long temp = 0;
-        long multiSum = 0;
-        String multi = "";
+        long[] result = new long[l1+l2];
+        Num res = new Num();
+        res.base = a.base;
+        int k=0;
         for(int i=0;i<l3;i++){
             for(int j=0;j<l4;j++){
                 long sum1 = 0;
@@ -113,22 +137,29 @@ public class Num {
                 else{
                     sum1 = (b.arr[j]*a.arr[i]) + temp;
                 }
-                if(j<l4-1){
-                    temp = sum1/defaultBase; // change 1000 to base
-                    sum1 = sum1%defaultBase; // change 1000 to base
-                }
-                multi = sum1 + multi;
+                temp = sum1/defaultBase; // change 1000 to base
+                sum1 = sum1%defaultBase; // change 1000 to base
+                result[i+j] = result[i+j] + sum1;
+                temp = temp + (result[i+j]/defaultBase);
+                result[i+j] = result[i+j]%defaultBase;
+                k = i + j;
             }
+            result[k+1] = result[k+1] + temp;
             temp=0;
-            multiSum = multiSum + ((Long.parseLong(multi) ) * (long) Math.pow(defaultBase,(double) i));
-            multi = "";
         }
-        return new Num(Long.toString(multiSum));
+        res.arr = result;
+        res.len = result.length;
+        return res;
     }
 
     // Use divide and conquer
     public static Num power(Num a, long n) {
-        return null;
+        if(n>1){
+            long low = n/2;
+            long high = n - low;
+            return product(power(a,low), power(a, high));
+        }
+        return a;
     }
 
     // Use binary search to calculate a/b
@@ -150,6 +181,20 @@ public class Num {
     // Utility functions
     // compare "this" to "other": return +1 if this is greater, 0 if equal, -1 otherwise
     public int compareTo(Num other) {
+        return Num.compare(this, other);
+    }
+
+    public static int compare(Num a, Num b){
+        if(a.len<b.len) return -1;
+        if(a.len > b.len) return 1;
+        for(int i=a.len-1;i>=0;i--){
+            if(a.arr[i]< b.arr[i]){
+                return -1;
+            }
+            else if(a.arr[i]> b.arr[i]){
+                return 1;
+            }
+        }
         return 0;
     }
 
@@ -160,10 +205,9 @@ public class Num {
         String s ="";
         System.out.print(base +": ");
         for(long i:arr){
-//            System.out.print(i+s);
-            s = i +s;
+            System.out.print(s+" " + i);
         }
-        System.out.print(s);
+        System.out.println();
     }
 
     // Return number to a string in base 10
@@ -215,8 +259,8 @@ public class Num {
 
 
     public static void main(String[] args) {
-        Num x = new Num("12345678912123456");
-        Num y = new Num("12345678912123456");
+        Num x = new Num("999");
+        Num y = new Num("12341");
 //        System.out.println(1313%2139);
 //        x.by2();
 //        System.out.print(Math.pow(2, 31));
@@ -224,12 +268,15 @@ public class Num {
 //        sum.printList();
 //        long result = 0;
 //
+//        x.printList();
+//        y.printList();
 
 //        System.out.print("oo");
-        Num z = Num.product(x, y);
+        Num z = Num.power(y, 3);
 //        System.out.println(z);
 //        Num a = Num.power(x, 8);
-//        System.out.println(a);
+        System.out.println(z.isNegative);
         if(z != null) z.printList();
+
     }
 }
