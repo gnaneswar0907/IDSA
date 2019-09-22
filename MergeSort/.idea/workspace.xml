@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e619d61b-7741-4ef4-bbc0-522d1bdad091" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MergeSort.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/gxg170000/MergeSort.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../IntegerAirthmetic/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../IntegerAirthmetic/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntegerAirthmetic/src/gxg170000/Num.java" beforeDir="false" afterPath="$PROJECT_DIR$/../IntegerAirthmetic/src/gxg170000/Num.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gxg170000/MergeSort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gxg170000/MergeSort.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,8 +23,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/gxg170000/MergeSort.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="457">
-              <caret line="116" column="26" selection-start-line="116" selection-start-column="26" selection-end-line="116" selection-end-column="30" />
+            <state relative-caret-position="537">
+              <caret line="111" column="49" selection-start-line="111" selection-start-column="49" selection-end-line="111" selection-end-column="49" />
               <folding>
                 <element signature="method#mergeSort#1;class#MergeSort#0" />
                 <element signature="method#merge#0;class#MergeSort#0" />
@@ -33,7 +33,7 @@
                 <element signature="method#mergeTake3#0;class#MergeSort#0" />
                 <element signature="method#mergeSortTake4#0;class#MergeSort#0" />
                 <element signature="method#mergeSortTake4#0;class#MergeSort#0" />
-                <element signature="method#insertionSort#0;class#MergeSort#0" />
+                <element signature="method#mergeSortTake5#1;class#MergeSort#0" />
               </folding>
             </state>
           </provider>
@@ -58,7 +58,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="width" value="1680" />
     <option name="height" value="1050" />
   </component>
@@ -133,15 +133,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1568767719046</updated>
-      <workItem from="1568767720483" duration="10196000" />
+      <workItem from="1568767720483" duration="12303000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10196000" />
+    <option name="totallyTimeSpent" value="12303000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <frame x="0" y="0" width="1680" height="1050" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Designer" order="0" />
@@ -153,12 +153,12 @@
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="1" />
-      <window_info anchor="bottom" id="Terminal" order="2" />
+      <window_info anchor="bottom" id="Terminal" order="2" weight="0.21607515" />
       <window_info anchor="bottom" id="Database Changes" order="3" />
       <window_info anchor="bottom" id="Event Log" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="5" />
       <window_info anchor="bottom" id="Find" order="6" />
-      <window_info active="true" anchor="bottom" id="Run" order="7" visible="true" weight="0.19489796" />
+      <window_info active="true" anchor="bottom" id="Run" order="7" visible="true" weight="0.19415449" />
       <window_info anchor="bottom" id="Debug" order="8" weight="0.30510205" />
       <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.32959184" />
@@ -181,8 +181,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/gxg170000/MergeSort.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="457">
-          <caret line="116" column="26" selection-start-line="116" selection-start-column="26" selection-end-line="116" selection-end-column="30" />
+        <state relative-caret-position="537">
+          <caret line="111" column="49" selection-start-line="111" selection-start-column="49" selection-end-line="111" selection-end-column="49" />
           <folding>
             <element signature="method#mergeSort#1;class#MergeSort#0" />
             <element signature="method#merge#0;class#MergeSort#0" />
@@ -191,7 +191,7 @@
             <element signature="method#mergeTake3#0;class#MergeSort#0" />
             <element signature="method#mergeSortTake4#0;class#MergeSort#0" />
             <element signature="method#mergeSortTake4#0;class#MergeSort#0" />
-            <element signature="method#insertionSort#0;class#MergeSort#0" />
+            <element signature="method#mergeSortTake5#1;class#MergeSort#0" />
           </folding>
         </state>
       </provider>

@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5155d3ed-9d6f-4dc7-ae21-5cd54454cb97" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gxg170000/Num.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gxg170000/Num.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MergeSort/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MergeSort/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MergeSort/src/gxg170000/MergeSort.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MergeSort/src/gxg170000/MergeSort.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,35 +21,66 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/gxg170000/Num.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="217" column="39" lean-forward="true" selection-start-line="217" selection-start-column="39" selection-end-line="217" selection-end-column="39" />
+            <state relative-caret-position="219">
+              <caret line="274" column="40" selection-start-line="274" selection-start-column="40" selection-end-line="274" selection-end-column="40" />
               <folding>
                 <element signature="method#Num#1;class#Num#0" />
+                <element signature="method#Num#2;class#Num#0" />
                 <element signature="method#reverse#0;class#Num#0" />
-                <element signature="e#1111#1150#1" />
-                <element signature="e#1136#1137#0" expanded="true" />
-                <element signature="method#add#0;class#Num#0" />
+                <element signature="e#2034#2035#0" expanded="true" />
+                <element signature="method#checkSignAndDo#0;class#Num#0" />
+                <element signature="method#_add#0;class#Num#0" />
+                <element signature="method#_subtract#0;class#Num#0" />
                 <element signature="method#subtract#0;class#Num#0" />
                 <element signature="method#product#0;class#Num#0" />
                 <element signature="method#power#0;class#Num#0" />
-                <element signature="e#1542#1570#1" />
-                <element signature="e#4669#4670#0" expanded="true" />
-                <element signature="e#1630#1658#1" />
-                <element signature="e#4757#4758#0" expanded="true" />
-                <element signature="e#1725#1753#1" />
-                <element signature="e#4852#4853#0" expanded="true" />
-                <element signature="e#5053#5054#0" expanded="true" />
+                <element signature="method#divide#0;class#Num#0" />
+                <element signature="method#mod#0;class#Num#0" />
+                <element signature="method#squareRoot#0;class#Num#0" />
+                <element signature="method#fibonacci#0;class#Num#0" />
+                <element signature="n#!!doc;n#compareTo#0;n#Num#0" />
+                <element signature="e#4903#4951#1" />
+                <element signature="e#9163#9164#0" expanded="true" />
                 <element signature="method#checkSmall#0;class#Num#0" />
                 <element signature="method#printList#0;class#Num#0" />
-                <element signature="e#2220#2248#1" />
-                <element signature="e#5882#5883#0" expanded="true" />
-                <element signature="e#2392#2420#1" />
-                <element signature="e#6054#6055#0" expanded="true" />
+                <element signature="method#removeTrailingZeros#0;class#Num#0" />
+                <element signature="method#toString#0;class#Num#0" />
+                <element signature="method#convertBase#0;class#Num#0" />
                 <element signature="method#by2#0;class#Num#0" />
-                <element signature="e#2775#2803#1" />
-                <element signature="e#6930#6931#0" expanded="true" />
-                <element signature="e#3066#3094#1" />
-                <element signature="e#7221#7222#0" expanded="true" />
+                <element signature="method#initializeOperatorWithPrecedence#0;class#Num#0" />
+                <element signature="method#evaluate#0;class#Num#0" />
+                <element signature="method#evaluatePostfix#0;class#Num#0" />
+                <element signature="method#evaluateInfix#0;class#Num#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gxg170000/BaseDifferException.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../LP's/Num-master/ypp170130/BaseMismatchException.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../LP's/Num-master/ypp170130/Num.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2265">
+              <caret line="153" column="22" lean-forward="true" selection-start-line="153" selection-start-column="22" selection-end-line="153" selection-end-column="22" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -68,11 +101,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/src/gxg170000/BaseDifferException.java" />
         <option value="$PROJECT_DIR$/src/gxg170000/Num.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="width" value="1680" />
     <option name="height" value="1050" />
   </component>
@@ -90,6 +124,17 @@
             <path>
               <item name="IntegerAirthmetic" type="b2602c69:ProjectViewProjectNode" />
               <item name="IntegerAirthmetic" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="IntegerAirthmetic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="IntegerAirthmetic" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="IntegerAirthmetic" type="b2602c69:ProjectViewProjectNode" />
+              <item name="IntegerAirthmetic" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="gxg170000" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -161,12 +206,12 @@
       <updated>1567877250143</updated>
       <workItem from="1567877252365" duration="2115000" />
       <workItem from="1568007472087" duration="10000" />
-      <workItem from="1568047605968" duration="33928000" />
+      <workItem from="1568047605968" duration="55216000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36053000" />
+    <option name="totallyTimeSpent" value="57341000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -178,10 +223,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1680" height="1050" extended-state="1" />
+    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.08791209" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.08791209" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -189,8 +234,8 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.18371607" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32959184" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4993895" visible="true" weight="0.18367347" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.26530612" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -198,8 +243,8 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.20306122" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4993895" weight="0.20306122" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50061053" side_tool="true" weight="0.17959183" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32959184" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -219,37 +264,69 @@
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$USER_HOME$/Downloads/TestLP1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1560">
+          <caret line="113" lean-forward="true" selection-start-line="113" selection-end-line="113" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../LP's/Num-master/ypp170130/BaseMismatchException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gxg170000/BaseDifferException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../LP's/Num-master/ypp170130/Num.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2265">
+          <caret line="153" column="22" lean-forward="true" selection-start-line="153" selection-start-column="22" selection-end-line="153" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/gxg170000/Num.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="217" column="39" lean-forward="true" selection-start-line="217" selection-start-column="39" selection-end-line="217" selection-end-column="39" />
+        <state relative-caret-position="219">
+          <caret line="274" column="40" selection-start-line="274" selection-start-column="40" selection-end-line="274" selection-end-column="40" />
           <folding>
             <element signature="method#Num#1;class#Num#0" />
+            <element signature="method#Num#2;class#Num#0" />
             <element signature="method#reverse#0;class#Num#0" />
-            <element signature="e#1111#1150#1" />
-            <element signature="e#1136#1137#0" expanded="true" />
-            <element signature="method#add#0;class#Num#0" />
+            <element signature="e#2034#2035#0" expanded="true" />
+            <element signature="method#checkSignAndDo#0;class#Num#0" />
+            <element signature="method#_add#0;class#Num#0" />
+            <element signature="method#_subtract#0;class#Num#0" />
             <element signature="method#subtract#0;class#Num#0" />
             <element signature="method#product#0;class#Num#0" />
             <element signature="method#power#0;class#Num#0" />
-            <element signature="e#1542#1570#1" />
-            <element signature="e#4669#4670#0" expanded="true" />
-            <element signature="e#1630#1658#1" />
-            <element signature="e#4757#4758#0" expanded="true" />
-            <element signature="e#1725#1753#1" />
-            <element signature="e#4852#4853#0" expanded="true" />
-            <element signature="e#5053#5054#0" expanded="true" />
+            <element signature="method#divide#0;class#Num#0" />
+            <element signature="method#mod#0;class#Num#0" />
+            <element signature="method#squareRoot#0;class#Num#0" />
+            <element signature="method#fibonacci#0;class#Num#0" />
+            <element signature="n#!!doc;n#compareTo#0;n#Num#0" />
+            <element signature="e#4903#4951#1" />
+            <element signature="e#9163#9164#0" expanded="true" />
             <element signature="method#checkSmall#0;class#Num#0" />
             <element signature="method#printList#0;class#Num#0" />
-            <element signature="e#2220#2248#1" />
-            <element signature="e#5882#5883#0" expanded="true" />
-            <element signature="e#2392#2420#1" />
-            <element signature="e#6054#6055#0" expanded="true" />
+            <element signature="method#removeTrailingZeros#0;class#Num#0" />
+            <element signature="method#toString#0;class#Num#0" />
+            <element signature="method#convertBase#0;class#Num#0" />
             <element signature="method#by2#0;class#Num#0" />
-            <element signature="e#2775#2803#1" />
-            <element signature="e#6930#6931#0" expanded="true" />
-            <element signature="e#3066#3094#1" />
-            <element signature="e#7221#7222#0" expanded="true" />
+            <element signature="method#initializeOperatorWithPrecedence#0;class#Num#0" />
+            <element signature="method#evaluate#0;class#Num#0" />
+            <element signature="method#evaluatePostfix#0;class#Num#0" />
+            <element signature="method#evaluateInfix#0;class#Num#0" />
           </folding>
         </state>
       </provider>

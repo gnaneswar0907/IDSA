@@ -106,19 +106,20 @@ public class MergeSort {
 
     public void mergeSortTake5(int[] A){
         int[] B = A.clone();
-        mergeSortTake5(A, B, 0, A.length-1);
+        mergeSortTake5(A, B);
     }
 
-    private void mergeSortTake5(int[] A, int[] B, int low, int high){
+    private void mergeSortTake5(int[] A, int[] B){
+        int [] T = A;
         for(int i=1;i<A.length;i=2*i){
-            for(int j=0;j<A.length;j+=2*i){
+            for(int j=0;j<A.length-1;j+=2*i){
                int mid = Math.min(j+i-1, A.length-1);
                int right = Math.min(j+2*i-1, A.length-1);
                mergeTake3(A, B, j, mid, right);
             }
-            int [] T = A.clone();
-            A = B.clone();
-            B = T.clone();
+            T = A;
+            A = B;
+            B = T;
         }
     }
 

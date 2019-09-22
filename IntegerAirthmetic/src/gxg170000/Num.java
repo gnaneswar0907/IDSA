@@ -1,8 +1,10 @@
 package gxg170000;
 
+import java.util.*;
+
 public class Num {
-    static long defaultBase = 100;  // Change as needed
-    long base = 100;  // Change as needed
+    static long defaultBase = 1000000000;  // Change as needed
+    long base = 1000000000;  // Change as needed
     long[] arr;  // array to store arbitrarily large integers
     boolean isNegative;  // boolean flag to represent negative numbers
     int len;  // actual number of elements of array that are used;  number is stored in arr[0..len-1]
@@ -17,6 +19,11 @@ public class Num {
             temp = temp/10;
         }
 
+        if(s.charAt(0)=='-'){
+            s = s.substring(1);
+            this.isNegative = true;
+        }
+
         String reversedString = reverse(s);
 
         arr = new long[(int)Math.ceil((float)s.length()/count)];
@@ -29,6 +36,36 @@ public class Num {
             j++;
         }
         len = arr.length;
+        initializeOperatorWithPrecedence();
+    }
+
+    public Num(String s, long base){
+        this.base = base;
+        int count = 0;
+        long temp = base;
+        while(temp>1){
+            count++;
+            temp = temp/10;
+        }
+
+        if(s.charAt(0)=='-'){
+            s = s.substring(1);
+            this.isNegative = true;
+        }
+
+        String reversedString = reverse(s);
+
+        arr = new long[(int)Math.ceil((float)s.length()/count)];
+
+        int j=0;
+
+        for (int i = 0; i < reversedString.length(); i += count) {
+
+            arr[j] =Long.parseLong(reverse(reversedString.substring(i, Math.min(s.length(), i+count))));
+            j++;
+        }
+        len = arr.length;
+        initializeOperatorWithPrecedence();
     }
 
     public static String reverse(String s){
@@ -41,7 +78,29 @@ public class Num {
         this(Long.toString(x));
     }
 
-    public static Num add(Num a, Num b) {
+    private static Num checkSignAndDo(Num a, Num b, String op){
+        if(op=="subtract") b.isNegative = true;
+        if((a.isNegative && !b.isNegative)||(!a.isNegative && b.isNegative)){
+            return _subtract(a,b);
+        }
+        else{
+            if(a.isNegative && b.isNegative){
+                Num res = _add(a, b);
+                res.isNegative = true;
+                return res;
+            }
+            else{
+                if(op=="add"){
+                    return _add(a, b);
+                }
+                else{
+                    return _subtract(a, b);
+                }
+            }
+        }
+    }
+
+    private static Num _add(Num a, Num b){
         int l1 = a.len;
         int l2 = b.len;
         long temp = 0;
@@ -68,15 +127,15 @@ public class Num {
             }
         }
 
-        long result = 0;
+        Num result = new Num();
+        result.len = res.length;
+        result.arr = res;
+        result.base = a.base;
 
-        for(int i=0;i<res.length;i++){
-            result = result + (res[i]* ((long)(Math.pow(a.base,i)))); // might not work for large numbers
-        }
-        return new Num(Long.toString(result));
+        return result;
     }
 
-    public static Num subtract(Num a, Num b) {
+    private static Num _subtract(Num a, Num b){
         boolean negative = false;
         long carry = 0;
         Num big, small;
@@ -118,7 +177,24 @@ public class Num {
         return subtractResult;
     }
 
+    public static Num add(Num a, Num b) {
+        if(a.base() != b.base()){
+            throw new BaseDifferException("Base of both numbers must be same");
+        }
+        return checkSignAndDo(a, b, "add");
+    }
+
+    public static Num subtract(Num a, Num b) {
+        if(a.base() != b.base()){
+            throw new BaseDifferException("Base of both numbers must be same");
+        }
+        return checkSignAndDo(a, b, "subtract");
+    }
+
     public static Num product(Num a, Num b) {
+        if(a.base() != b.base()){
+            throw new BaseDifferException("Base of both numbers must be same");
+        }
         int l1 = a.len;
         int l2 = b.len;
         int l3 = Math.max(l1,l2);
@@ -149,6 +225,9 @@ public class Num {
         }
         res.arr = result;
         res.len = result.length;
+        if((a.isNegative && !b.isNegative)||(!a.isNegative && b.isNegative)){
+            res.isNegative = true;
+        }
         return res;
     }
 
@@ -164,17 +243,78 @@ public class Num {
 
     // Use binary search to calculate a/b
     public static Num divide(Num a, Num b) {
-        return null;
+        if(a.base() != b.base()){
+            throw new BaseDifferException("Base of both numbers must be same");
+        }
+        Num start = new Num("0");
+        Num end = a;
+        boolean resSign = false;
+        if((a.isNegative && !b.isNegative)||(!a.isNegative && b.isNegative)){
+            resSign = true;
+        }
+        a.isNegative = false;
+        b.isNegative = false;
+
+        while(start.compareTo(end)==-1){
+            Num mid = Num.add(start, end).by2();
+            Num comparator = Num.product(b, mid);
+            if(comparator.compareTo(a)==1){
+                end = mid;
+            }
+            else {
+                start = Num.add(mid, new Num("1"));
+            }
+        }
+
+        Num res =  Num.subtract(start, new Num("1"));
+        res.isNegative = resSign;
+        return res;
     }
 
     // return a%b
     public static Num mod(Num a, Num b) {
-        return null;
+        if(a.base() != b.base()){
+            throw new BaseDifferException("Base of both numbers must be same");
+        }
+        Num quotient = Num.divide(a, b);
+        return Num.subtract(a, Num.product(b, quotient));
     }
 
     // Use binary search
     public static Num squareRoot(Num a) {
-        return null;
+        if(a.isNegative) return new Num("0");
+        Num start = new Num("0");
+        Num answer = new Num();
+        Num end = a;
+        while (start.compareTo(end)==-1){
+            Num mid = Num.add(start, end).by2();
+            int comparator = Num.power(mid, 2).compareTo(a);
+            if(comparator==0){
+                return mid;
+            }
+            else if(comparator == -1){
+                start = Num.add(mid, new Num("1"));
+                answer.arr = mid.arr;
+                answer.base = mid.base;
+                answer.len = mid.len;
+                answer.isNegative = mid.isNegative;
+            }
+            else {
+                end = Num.subtract(mid, new Num("1"));
+            }
+        }
+        return answer;
+    }
+
+    public static Num fibonacci(int n) {
+        Num a = new Num(0);
+        Num b = new Num(1);
+        for(int i=0; i<n; i++) {
+            Num c = Num.add(a,b);
+            a = b;
+            b = c;
+        }
+        return a;
     }
 
 
@@ -185,98 +325,218 @@ public class Num {
     }
 
     public static int compare(Num a, Num b){
-        if(a.len<b.len) return -1;
-        if(a.len > b.len) return 1;
-        for(int i=a.len-1;i>=0;i--){
-            if(a.arr[i]< b.arr[i]){
-                return -1;
+        a.removeTrailingZeros();
+        b.removeTrailingZeros();
+        if(a.isNegative && !b.isNegative) return -1;
+        if(!a.isNegative && b.isNegative) return 1;
+        if(a.isNegative && b.isNegative){
+            if(a.len<b.len) return 1;
+            if(a.len > b.len) return -1;
+            for(int i=a.len-1;i>=0;i--){
+                if(a.arr[i]< b.arr[i]){
+                    return 1;
+                }
+                else if(a.arr[i]> b.arr[i]){
+                    return -1;
+                }
             }
-            else if(a.arr[i]> b.arr[i]){
-                return 1;
-            }
+            return 0;
         }
-        return 0;
+        else {
+            if(a.len<b.len) return -1;
+            if(a.len > b.len) return 1;
+            for(int i=a.len-1;i>=0;i--){
+                if(a.arr[i]< b.arr[i]){
+                    return -1;
+                }
+                else if(a.arr[i]> b.arr[i]){
+                    return 1;
+                }
+            }
+            return 0;
+        }
+
     }
+
 
     // Output using the format "base: elements of list ..."
     // For example, if base=100, and the number stored corresponds to 10965,
     // then the output is "100: 65 9 1"
     public void printList() {
-        String s ="";
-        System.out.print(base +": ");
-        for(long i:arr){
-            System.out.print(s+" " + i);
+        if(this!=null){
+            String s ="";
+            System.out.print(base +": ");
+            for(long i:arr){
+                System.out.print(s+" " + i);
+            }
+            System.out.println();
         }
-        System.out.println();
+        else {
+            System.out.println(0);
+        }
+    }
+
+    public void removeTrailingZeros(){
+        while (this.len>1 && this.arr[this.len-1]==0){
+            this.len--;
+        }
     }
 
     // Return number to a string in base 10
     public String toString() {
-        return null;
+        String result = "";
+        for(long i:this.arr){
+            result = i + result;
+        }
+        StringBuffer sb = new StringBuffer(result);
+        int i=0;
+        while (i < result.length() && result.charAt(i) == '0'){
+            i++;
+        }
+        sb.replace(0, i, "");
+        return sb.toString();
     }
 
     public long base() { return base; }
 
     // Return number equal to "this" number, in base=newBase
     public Num convertBase(int newBase) {
-        return null;
+        Num res = new Num(this.toString(), newBase);
+        res.isNegative = this.isNegative;
+        return res;
     }
 
     // Divide by 2, for using in binary search
     public Num by2() {
-        long temp = 0;
-        long[] res = new long[len];
-        int j = 0;
-        for(int i=len-1;i>=0;i--){
-            res[j] = (arr[i] + (temp * (long)(Math.pow(1000, (double)(i+1)))))/2;
-            temp = arr[i]%2;
-            j++;
+        long carry = 0;
+        long[] res = new long[this.len];
+        Num result = new Num();
+        for(int i=this.len-1;i>=0;i--){
+            res[i] = (this.arr[i] + (this.base*carry))/2;
+            carry = (this.arr[i])%2;
         }
-        temp = 0;
-        j=0;
-        for(int i=res.length-1;i>=0;i--){
-            if(res[i]!=0){
-                temp = temp + (res[i]* (long)(Math.pow(1000, (long)j)));
-                j++;
-            }
+
+        result.len = res.length;
+        result.base = this.base;
+        result.isNegative = this.isNegative;
+        result.arr = res;
+        return result;
+    }
+
+    static HashMap<String, Integer> operators = new HashMap<>();
+
+    public static void initializeOperatorWithPrecedence(){
+        operators.put("*",2);operators.put("+",1);operators.put("-",1);operators.put("/",2);
+    }
+
+    public static Num evaluate(Num x, Num y, String s){
+        if(s=="*"){
+            return product(x,y);
         }
-        return new Num(Long.toString(temp));
+        else if(s=="+"){
+            return add(x,y);
+        }
+        else if(s=="-"){
+            return subtract(x,y);
+        }
+        else if(s=="/"){
+            return divide(x,y);
+        }
+
+        return null;
     }
 
     // Evaluate an expression in postfix and return resulting number
     // Each string is one of: "*", "+", "-", "/", "%", "^", "0", or
     // a number: [1-9][0-9]*.  There is no unary minus operator.
     public static Num evaluatePostfix(String[] expr) {
-        return null;
+        Stack<Num> numberStack = new Stack<>();
+        for(String s : expr){
+            if(operators.containsKey(s)){
+                if(!numberStack.isEmpty()){
+                    Num x = numberStack.pop();
+                    Num y = numberStack.pop();
+                    Num result = evaluate(x,y, s);
+                    if(result!=null){
+                     numberStack.push(result);
+                    }
+                }
+
+            }
+            else{
+                numberStack.push(new Num(s));
+            }
+        }
+        return numberStack.pop();
     }
 
     // Evaluate an expression in infix and return resulting number
     // Each string is one of: "*", "+", "-", "/", "%", "^", "(", ")", "0", or
     // a number: [1-9][0-9]*.  There is no unary minus operator.
     public static Num evaluateInfix(String[] expr) {
-        return null;
+        Stack<Num> numberStack = new Stack<>();
+        Stack<String> operatorStack = new Stack<>();
+        for(String s : expr){
+            if(operators.containsKey(s)){
+
+                while (!operatorStack.isEmpty() && operatorStack.peek()!="(" && operators.get(operatorStack.peek())>=operators.get(s)){
+                    String op = operatorStack.pop();
+                    Num x = numberStack.pop();
+                    Num y = numberStack.pop();
+                    Num result = evaluate(x,y,op);
+                    if(result!=null){
+                        numberStack.push(result);
+                    }
+                }
+
+                operatorStack.push(s);
+
+            }
+            else if(s=="("){
+                operatorStack.push(s);
+            }
+            else if(s==")"){
+                while(operatorStack.peek()!="("){
+                    String op = operatorStack.pop();
+                    Num x = numberStack.pop();
+                    Num y = numberStack.pop();
+                    Num result = evaluate(x,y,op);
+                    if(result!=null){
+                        numberStack.push(result);
+                    }
+                }
+                operatorStack.pop();
+            }
+            else{
+                numberStack.push(new Num(s));
+            }
+        }
+        while (!operatorStack.isEmpty()){
+            String op = operatorStack.pop();
+            if(!numberStack.isEmpty()){
+                Num x = numberStack.pop();
+                Num y = numberStack.pop();
+                Num result = evaluate(x,y,op);
+                if(result!=null){
+                    numberStack.push(result);
+                }
+            }
+
+        }
+        return numberStack.peek();
     }
 
 
-    public static void main(String[] args) {
-        Num x = new Num("999");
-        Num y = new Num("12341");
-//        System.out.println(1313%2139);
-//        x.by2();
-//        System.out.print(Math.pow(2, 31));
-//        Num sum = Num.product(x,y);
-//        sum.printList();
-//        long result = 0;
-//
-//        x.printList();
-//        y.printList();
+    public static void main(String[] args) throws EmptyStackException {
+        Num x = new Num("-100000121212121323");
+        Num y = new Num("-31231");
+        y.printList();
+        Num z = y.convertBase(1000);
+//        System.out.println(z.isNegative);
+        Num t = Num.add(y,z);
 
-//        System.out.print("oo");
-        Num z = Num.power(y, 3);
+        z.printList();
+
 //        System.out.println(z);
-//        Num a = Num.power(x, 8);
-        System.out.println(z.isNegative);
-        if(z != null) z.printList();
-
     }
 }
