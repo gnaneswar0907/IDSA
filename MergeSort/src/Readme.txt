@@ -1,8 +1,20 @@
 
+## Group Members
+    Gnaneswar Gandu - gxg170000
+    Rutuj Ravindra Puranik - rxp180014
+
+Steps to Run the program -
+
+1. Extract the contents of the zip file into a folder.
+2. After changing the working directory to current directory where we unzipped the files, compile the file MergeSort.java in the terminal using 'javac MergeSort.java'
+3. Next run the program by running the command java MergeSort
+4. The program will run default for n=2000000. The Algorithm which runs will be random in the four algorithms asked.
 
 
+After Running the Program for various values of 'n' for different Algorithms and not running more than one algorithm at a time,
+We get the following Observations -
 
-Genrated Table Results -
+Generated Table Results -
 
 +-----------+---------------------+---------------------+---------------------+---------------------+
 | Algorithm |  Merge Sort(Take 1) |  Merge Sort(Take 3) |  Merge Sort(Take 4) |  Merge Sort(Take 5) |
@@ -43,3 +55,5 @@ Genrated Table Results -
 +-----------+---------------------+---------------------+---------------------+---------------------+
 |           |         OME         |         OME         |         OME         |         OME         |
 +-----------+---------------------+---------------------+---------------------+---------------------+
+
+OME - Out of Memory Exception
