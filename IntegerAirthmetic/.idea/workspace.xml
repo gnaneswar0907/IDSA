@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5155d3ed-9d6f-4dc7-ae21-5cd54454cb97" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Readme.rtf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gxg170000/Num.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gxg170000/Num.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MergeSort/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MergeSort/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -103,7 +99,8 @@
       <workItem from="1568007472087" duration="10000" />
       <workItem from="1568047605968" duration="57446000" />
       <workItem from="1569203501621" duration="255000" />
-      <workItem from="1569203819761" duration="5771000" />
+      <workItem from="1569203819761" duration="6022000" />
+      <workItem from="1569256956835" duration="12000" />
     </task>
     <servers />
   </component>
@@ -124,7 +121,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
