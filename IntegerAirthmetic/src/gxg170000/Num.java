@@ -79,23 +79,36 @@ public class Num {
     }
 
     private static Num checkSignAndDo(Num a, Num b, String op){
-        if(op=="subtract") b.isNegative = true;
-        if((a.isNegative && !b.isNegative)||(!a.isNegative && b.isNegative)){
-            return _subtract(a,b);
-        }
-        else{
-            if(a.isNegative && b.isNegative){
+        if (op == "add") {
+            if(!a.isNegative && b.isNegative){
+                return _subtract(a,b);
+            }
+            else if(a.isNegative && !b.isNegative){
+                return _subtract(b,a);
+            }
+            else if(a.isNegative && b.isNegative){
                 Num res = _add(a, b);
                 res.isNegative = true;
                 return res;
             }
             else{
-                if(op=="add"){
-                    return _add(a, b);
-                }
-                else{
-                    return _subtract(a, b);
-                }
+                return _add(a, b);
+            }
+        }
+        else {
+            if(!a.isNegative && b.isNegative){
+                return _add(a,b);
+            }
+            else if(a.isNegative && !b.isNegative){
+                Num res = _add(a, b);
+                res.isNegative = true;
+                return res;
+            }
+            else if(a.isNegative && b.isNegative){
+                return _subtract(b,a);
+            }
+            else {
+                return _subtract(a,b);
             }
         }
     }
@@ -139,7 +152,7 @@ public class Num {
         boolean negative = false;
         long carry = 0;
         Num big, small;
-        if(compare(a,b)==-1){
+        if(compareWithoutSign(a,b)==-1){
             negative = true;
             big = b;
             small = a;
@@ -252,6 +265,8 @@ public class Num {
         if((a.isNegative && !b.isNegative)||(!a.isNegative && b.isNegative)){
             resSign = true;
         }
+        boolean asign = a.isNegative;
+        boolean bsign = b.isNegative;
         a.isNegative = false;
         b.isNegative = false;
 
@@ -268,6 +283,8 @@ public class Num {
 
         Num res =  Num.subtract(start, new Num("1"));
         res.isNegative = resSign;
+        a.isNegative = asign;
+        b.isNegative = bsign;
         return res;
     }
 
@@ -277,6 +294,13 @@ public class Num {
             throw new BaseDifferException("Base of both numbers must be same");
         }
         Num quotient = Num.divide(a, b);
+        if(quotient.isNegative && !b.isNegative){
+            quotient.isNegative = false;
+            return Num.add(a, Num.product(b, Num.add(quotient, new Num("1"))));
+        }
+        else if(quotient.isNegative && b.isNegative){
+            return Num.subtract(a, Num.product(b, Num.subtract(quotient, new Num("1"))));
+        }
         return Num.subtract(a, Num.product(b, quotient));
     }
 
@@ -343,19 +367,25 @@ public class Num {
             return 0;
         }
         else {
-            if(a.len<b.len) return -1;
-            if(a.len > b.len) return 1;
-            for(int i=a.len-1;i>=0;i--){
-                if(a.arr[i]< b.arr[i]){
-                    return -1;
-                }
-                else if(a.arr[i]> b.arr[i]){
-                    return 1;
-                }
-            }
-            return 0;
+            return compareWithoutSign(a, b);
         }
 
+    }
+
+    private static int compareWithoutSign(Num a, Num b){
+        a.removeTrailingZeros();
+        b.removeTrailingZeros();
+        if(a.len<b.len) return -1;
+        if(a.len > b.len) return 1;
+        for(int i=a.len-1;i>=0;i--){
+            if(a.arr[i]< b.arr[i]){
+                return -1;
+            }
+            else if(a.arr[i]> b.arr[i]){
+                return 1;
+            }
+        }
+        return 0;
     }
 
 
@@ -393,7 +423,12 @@ public class Num {
         while (i < result.length() && result.charAt(i) == '0'){
             i++;
         }
-        sb.replace(0, i, "");
+        if(result.length()>1){
+            sb.replace(0, i, "");
+        }
+        if(this.isNegative){
+            return "-"+sb.toString();
+        }
         return sb.toString();
     }
 
@@ -454,8 +489,8 @@ public class Num {
         for(String s : expr){
             if(operators.containsKey(s)){
                 if(!numberStack.isEmpty()){
-                    Num x = numberStack.pop();
                     Num y = numberStack.pop();
+                    Num x = numberStack.pop();
                     Num result = evaluate(x,y, s);
                     if(result!=null){
                      numberStack.push(result);
@@ -479,10 +514,10 @@ public class Num {
         for(String s : expr){
             if(operators.containsKey(s)){
 
-                while (!operatorStack.isEmpty() && operatorStack.peek()!="(" && operators.get(operatorStack.peek())>=operators.get(s)){
+                while (!operatorStack.isEmpty() && operatorStack.peek()!="(" && operators.get(operatorStack.peek())>operators.get(s)){
                     String op = operatorStack.pop();
-                    Num x = numberStack.pop();
                     Num y = numberStack.pop();
+                    Num x = numberStack.pop();
                     Num result = evaluate(x,y,op);
                     if(result!=null){
                         numberStack.push(result);
@@ -527,16 +562,25 @@ public class Num {
     }
 
 
-    public static void main(String[] args) throws EmptyStackException {
-        Num x = new Num("-100000121212121323");
-        Num y = new Num("-31231");
-        y.printList();
-        Num z = y.convertBase(1000);
-//        System.out.println(z.isNegative);
-        Num t = Num.add(y,z);
+    public static void main(String[] args) {
+        Num x = new Num("1571");
+        Num y = new Num("12");
+        System.out.println("x : "+ x.toString());
+        System.out.println("y : "+ y.toString());
 
-        z.printList();
+        System.out.println(x.isNegative);
+        System.out.println(y.isNegative);
 
-//        System.out.println(z);
+        System.out.println("Sum is : " + Num.add(x,y).toString());
+        System.out.println("Difference is : " + Num.subtract(x,y).toString());
+        System.out.println("Product is : " + Num.product(x,y).toString());
+        System.out.println("Quotient is : " + Num.divide(x,y).toString());
+        System.out.println("Remainder is : " + Num.mod(x,y).toString());
+
+        System.out.println("Infix expression: "+ "100 * ( 2 + 12 ) / 14");
+        System.out.println("Result: "+Num.evaluateInfix(new String[] {"100", "*", "(", "2", "+", "12", ")", "/", "14"}));
+
+        System.out.println("Postfix expression: "+ "13 12 * 48 3 / - 66 *");
+        System.out.println("PostFix Result : "+ Num.evaluatePostfix(new String[] {"13", "12", "*", "48", "3", "/", "-", "66", "+"}));
     }
 }
