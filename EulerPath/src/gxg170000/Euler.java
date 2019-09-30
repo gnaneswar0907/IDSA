@@ -4,13 +4,13 @@
  */
 
 // change to your netid
-package idsa;
+package gxg170000;
 
-import idsa.Graph.Vertex;
-import idsa.Graph.Edge;
-import idsa.Graph.GraphAlgorithm;
-import idsa.Graph.Factory;
-import idsa.Graph.Timer;
+import gxg170000.Graph.Vertex;
+import gxg170000.Graph.Edge;
+import gxg170000.Graph.GraphAlgorithm;
+import gxg170000.Graph.Factory;
+import gxg170000.Graph.Timer;
 
 import java.util.Iterator;
 import java.io.File;
@@ -51,12 +51,12 @@ public class Euler extends GraphAlgorithm<Euler.EulerVertex> {
      */
 
     public boolean isEulerian() {
-		
+        return false;
 	}
 
 
     public List<Vertex> findEulerTour() {
-	if(!isEulerian()) { return new LinkedList<Edge>(); }
+	if(!isEulerian()) { return new LinkedList<Vertex>(); }
        // Graph is Eulerian...find the tour and return tour
 	return tour;
     }
