@@ -23,13 +23,14 @@ public class Euler extends GraphAlgorithm<Euler.EulerVertex> {
     static int VERBOSE = 1;
     Vertex start;
     List<Vertex> tour;
+    Vertex temp;
     
 	// You need this if you want to store something at each node
     static class EulerVertex implements Factory {
-	        
+        boolean isVisited;
 
         EulerVertex(Vertex u) {
-	    
+            this.isVisited = false;
         }
 	public EulerVertex make(Vertex u) { return new EulerVertex(u); }
 
@@ -39,8 +40,57 @@ public class Euler extends GraphAlgorithm<Euler.EulerVertex> {
 	public Euler(Graph g, Vertex start) {
 	super(g, new EulerVertex(null));
 	this.start = start;
-	
+	this.temp = null;
 	tour = new LinkedList<>();
+    }
+
+    private void dfsHelper(Vertex v, Graph gra) {
+        if(!get(v).isVisited){
+            get(v).isVisited = true;
+            for(Edge e : gra.outEdges(v)){
+                Vertex u = e.otherEnd(v);
+                dfsHelper(u, gra);
+            }
+        }
+    }
+
+    private Graph transpose(Graph g) {
+        Graph gg = new Graph(g.size(), true);
+
+        for(Vertex v : g.getVertexArray()){
+            for(Edge e : g.outEdges(v)){
+                Vertex u = e.otherEnd(v);
+                gg.addEdge(u.name-1,v.name-1, 0);
+            }
+        }
+
+        return gg;
+    }
+
+    private boolean isStronglyConnected() {
+        dfsHelper(start, g);
+
+        for(Vertex v : g.getVertexArray()){
+            if(!get(v).isVisited){
+                return false;
+            }
+        }
+
+        Graph gReverse = transpose(g);
+
+        for(Vertex v : gReverse.getVertexArray()){
+            get(v).isVisited = false;
+        }
+
+        dfsHelper(start, gReverse);
+
+        for(Vertex v : gReverse.getVertexArray()){
+            if(!get(v).isVisited){
+                return false;
+            }
+        }
+
+        return true;
     }
 
     /* To do: test if the graph is Eulerian.
@@ -51,7 +101,19 @@ public class Euler extends GraphAlgorithm<Euler.EulerVertex> {
      */
 
     public boolean isEulerian() {
-        return false;
+
+        if(!isStronglyConnected()){
+            return false;
+        }
+
+        for(Vertex v : g.getVertexArray()){
+            if(g.outEdges(v)!=g.inEdges(v)){
+                this.temp = v;
+                return false;
+            }
+        }
+
+        return true;
 	}
 
 
@@ -87,8 +149,15 @@ public class Euler extends GraphAlgorithm<Euler.EulerVertex> {
 		
         timer.end();
         if(VERBOSE > 0) {
-	    System.out.println("Output:");
-            // print the tour as sequence of vertices (e.g., 3,4,6,5,2,5,1,3)
+            if(tour!=null){
+                System.out.println("Output:");
+                // print the tour as sequence of vertices (e.g., 3,4,6,5,2,5,1,3)
+            }
+            else {
+//                System.out.println("Graph is not Eulerian, beacause indegree = "+g.inEdges(euler.temp)+
+//                                    " and outdegree = "+ g.outEdges(euler.temp)+ " at Verted "+ g.getVertex(euler.temp).name);
+                System.out.println("Not Eulerian");
+            }
 	    System.out.println();
         }
         System.out.println(timer);
