@@ -94,20 +94,17 @@ public class BinaryHeap<T extends Comparable<? super T>> {
 
     /** pq[index] may violate heap order with children */
     void percolateDown(int index) {
-        // If the node is a non-leaf node and greater
-        // than any of its child
+        // If the node is not a leaf node and greater than any of its child
         if(!isALeaf(index)){
             if ((compare(pq[index], pq[leftChild(index)]) > 0) || (compare(pq[index], pq[rightChild(index)]) > 0)) {
 
-                // Swap with the left child and heapify
-                // the left child
+                // Swap with the left child and percolate down
                 if (compare(pq[leftChild(index)], pq[rightChild(index)]) < 0) {
                     swap(index, leftChild(index));
                     percolateDown(leftChild(index));
                 }
 
-                // Swap with the right child and heapify
-                // the right child
+                // Swap with the right child and percolate down
                 else {
                     swap(index, rightChild(index));
                     percolateDown(rightChild(index));
