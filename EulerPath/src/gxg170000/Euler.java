@@ -76,15 +76,15 @@ public class Euler extends GraphAlgorithm<Euler.EulerVertex> {
             }
         }
 
-        Graph gReverse = transpose(g);
+        g.reverseGraph();
 
-        for(Vertex v : gReverse.getVertexArray()){
+        for(Vertex v : g.getVertexArray()){
             get(v).isVisited = false;
         }
 
-        dfsHelper(start, gReverse);
+        dfsHelper(start, g);
 
-        for(Vertex v : gReverse.getVertexArray()){
+        for(Vertex v : g.getVertexArray()){
             if(!get(v).isVisited){
                 return false;
             }
