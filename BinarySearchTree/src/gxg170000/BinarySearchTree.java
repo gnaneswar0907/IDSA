@@ -1,11 +1,14 @@
-/** @author 
- *  Binary search tree (starter code)
+/** @authors
+ * Gnaneswar Gandu gxg170000
+ * Rutuj Ravindra Puranik rxp180014
+ *  Binary search tree
  **/
 
-package idsa;
+package gxg170000;
 
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class BinarySearchTree<T extends Comparable<? super T>> implements Iterable<T> {
@@ -32,33 +35,66 @@ public class BinarySearchTree<T extends Comparable<? super T>> implements Iterab
     /** TO DO: Is x contained in tree?
      */
     public boolean contains(T x) {
-	return false;
+        Entry<T> temp = get(x, root);
+	    return temp!=null;
     }
 
     /** TO DO: Is there an element that is equal to x in the tree?
      *  Element in tree that is equal to x is returned, null otherwise.
      */
     public T get(T x) {
-	return null;
+        Entry<T> temp = get(x, root);
+	    return  temp!=null ? temp.element : null ;
     }
+
+    Entry<T> get(T x, Entry<T> ent){
+        if(ent==null){
+            return null;
+        }
+        int cmp = x.compareTo(ent.element);
+        if(cmp == 0) return ent;
+        else if(cmp<0) return  get(x, ent.left);
+        else return get(x, ent.right);
+    }
+
+
+
+    private boolean in = false;
 
     /** TO DO: Add x to tree. 
      *  If tree contains a node with same key, replace element by x.
      *  Returns true if x is a new element added to tree.
      */
     public boolean add(T x) {
-	return true;
+        root = add(x, root);
+        return in;
+    }
+
+    Entry add(T x, Entry<T> ent){
+        if(ent==null){
+            ent = new Entry<>(x, null,null);
+            size++;
+            in = true;
+            return ent;
+        }
+        int cmp = x.compareTo(ent.element);
+        if(cmp<0) ent.left = add(x, ent.left);
+        else if(cmp>0) ent.right = add(x, ent.right);
+        else{
+            ent = new Entry<>(x, ent.left,ent.right);
+        }
+        return ent;
     }
 
     /** TO DO: Remove x from tree. 
      *  Return x if found, otherwise return null
      */
     public T remove(T x) {
-	return null;
+	    return null;
     }
 
     public T min() {
-	return null;
+	    return null;
     }
 
     public T max() {
@@ -68,8 +104,21 @@ public class BinarySearchTree<T extends Comparable<? super T>> implements Iterab
     // TODO: Create an array with the elements using in-order traversal of tree
     public Comparable[] toArray() {
 	Comparable[] arr = new Comparable[size];
-	/* write code to place elements in array here */
+	inorderT(root);
+	for(int i=0;i<linkQueue.size();i++){
+	    arr[i] = linkQueue.get(i);
+    }
 	return arr;
+    }
+
+    LinkedList<T> linkQueue = new LinkedList<>();
+
+    void inorderT(Entry<T> ent){
+        if(ent!=null){
+            inorderT(ent.left);
+            linkQueue.addLast(ent.element);
+            inorderT(ent.right);
+        }
     }
 
 
@@ -118,6 +167,8 @@ public class BinarySearchTree<T extends Comparable<? super T>> implements Iterab
                 t.remove(-x);
                 t.printTree();
             } else {
+                System.out.println(t.contains(13));
+                System.out.println(t.get(51));
                 Comparable[] arr = t.toArray();
                 System.out.print("Final: ");
                 for(int i=0; i<t.size; i++) {
