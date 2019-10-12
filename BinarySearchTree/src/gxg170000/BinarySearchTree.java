@@ -90,11 +90,46 @@ public class BinarySearchTree<T extends Comparable<? super T>> implements Iterab
      *  Return x if found, otherwise return null
      */
     public T remove(T x) {
-	    return null;
+        if(contains(x)){
+            root= remove(x, root);
+            size--;
+            return x;
+        }
+        else {
+            return null;
+        }
+
     }
 
-    public T min() {
-	    return null;
+    private Entry remove(T x, Entry<T> ent){
+        if(ent == null) return null;
+        if(x.compareTo(ent.element)<0) ent.left = remove(x,ent.left);
+        else if(x.compareTo(ent.element)>0) ent.right = remove(x,ent.right);
+        else {
+            if(ent.left==null){
+                return ent.right;
+            }
+            else if(ent.right==null){
+                return ent.left;
+            }
+            else{
+                ent.element = min(ent.right);
+                ent.right = remove(ent.element,ent.right);
+            }
+        }
+
+        return ent;
+    }
+
+
+
+    public T min(Entry<T> root) {
+        T minValue = root.element;
+        while (root.left!=null){
+            minValue = root.left.element;
+            root = root.left;
+        }
+        return minValue;
     }
 
     public T max() {
@@ -103,12 +138,12 @@ public class BinarySearchTree<T extends Comparable<? super T>> implements Iterab
 
     // TODO: Create an array with the elements using in-order traversal of tree
     public Comparable[] toArray() {
-	Comparable[] arr = new Comparable[size];
-	inorderT(root);
-	for(int i=0;i<linkQueue.size();i++){
-	    arr[i] = linkQueue.get(i);
-    }
-	return arr;
+        Comparable[] arr = new Comparable[size];
+        inorderT(root);
+        for(int i=0;i<size;i++){
+            arr[i] = linkQueue.get(i);
+        }
+        return arr;
     }
 
     LinkedList<T> linkQueue = new LinkedList<>();
@@ -167,8 +202,6 @@ public class BinarySearchTree<T extends Comparable<? super T>> implements Iterab
                 t.remove(-x);
                 t.printTree();
             } else {
-                System.out.println(t.contains(13));
-                System.out.println(t.get(51));
                 Comparable[] arr = t.toArray();
                 System.out.print("Final: ");
                 for(int i=0; i<t.size; i++) {
