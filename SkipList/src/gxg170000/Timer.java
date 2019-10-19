@@ -7,7 +7,7 @@
  *          System.out.println(timer);  // output statistics
  */
 
-package idsa;
+package gxg170000;
 public class Timer {
     long startTime, endTime, elapsedTime, memAvailable, memUsed;
     boolean ready;

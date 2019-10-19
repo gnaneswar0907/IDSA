@@ -2,7 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5155d3ed-9d6f-4dc7-ae21-5cd54454cb97" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/gxg170000/TestLP1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BinarySearchTree/src/gxg170000/BinarySearchTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BinarySearchTree/src/gxg170000/BinarySearchTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IntegerAirthmetic/Readme.rtf" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IntegerAirthmetic/Readme.rtf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gxg170000/Num.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gxg170000/Num.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RBT/src/RedBlackTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/../RBT/src/gxg170000/RedBlackTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SkipList/src/SkipList.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SkipList/src/gxg170000/SkipList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SkipList/src/SkipListDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SkipList/src/gxg170000/SkipListDriver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SkipList/src/Timer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SkipList/src/gxg170000/Timer.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,7 +61,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Num">
+  <component name="RunManager" selected="Application.TestLP1">
     <configuration name="Num (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="gxg170000.Num" />
       <extension name="coverage">
@@ -78,8 +87,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestLP1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="gxg170000.TestLP1" />
+      <module name="IntegerAirthmetic" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gxg170000.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TestLP1" />
         <item itemvalue="Application.Num" />
         <item itemvalue="Application.Num (1)" />
       </list>
@@ -101,6 +124,8 @@
       <workItem from="1569203501621" duration="255000" />
       <workItem from="1569203819761" duration="6022000" />
       <workItem from="1569256956835" duration="12000" />
+      <workItem from="1571279138563" duration="2805000" />
+      <workItem from="1571362751643" duration="1513000" />
     </task>
     <servers />
   </component>
@@ -131,17 +156,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/gxg170000/Num.java</url>
-          <line>295</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="masterDetails">
     <states>

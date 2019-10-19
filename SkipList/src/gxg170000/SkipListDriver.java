@@ -1,9 +1,7 @@
 
-package idsa;
-import idsa.Timer;
+package gxg170000;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Iterator;
 import java.util.Scanner;
 
 //Driver program for skip list implementation.

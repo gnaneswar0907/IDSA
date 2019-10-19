@@ -565,7 +565,10 @@ public class Num {
     public static void main(String[] args) {
         Num x = new Num("1571");
         Num y = new Num("12");
-        System.out.println("x : "+ x.toString());
+        Num zz = new Num("1912991252611125159670459142926165956543555293");
+        Num xx = Num.evaluatePostfix(new String[] { "98765432109876543210987654321",  "5432109876543210987654321", "345678901234567890123456789012", "*", "+", "246801357924680135792468013579", "*", "12345678910111213141516171819202122", "191817161514131211109876543210", "13579", "24680", "*", "-", "*", "+", "7896543", "*", "157984320", "+" });
+        System.out.println();
+        zz.convertBase(87654321).printList();
         System.out.println("y : "+ y.toString());
 
         System.out.println(x.isNegative);
