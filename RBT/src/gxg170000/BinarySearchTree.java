@@ -69,7 +69,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> implements Iterab
     }
 
     /** Helper method to add an element in the tree */
-    Entry add(T x, Entry<T> ent){
+    Entry<T> add(T x, Entry<T> ent){
         if(ent==null){
             ent = new Entry<>(x, null,null);
             size++;

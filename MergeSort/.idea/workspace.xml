@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e619d61b-7741-4ef4-bbc0-522d1bdad091" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../Hashing/Readme.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Hashing/src/gxg170000/Driver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Hashing/src/gxg170000/DoubleHashing.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Hashing/src/gxg170000/DoubleHashing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RBT/src/gxg170000/BinarySearchTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/../RBT/src/gxg170000/BinarySearchTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RBT/src/gxg170000/RedBlackTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/../RBT/src/gxg170000/RedBlackTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SkipList/src/gxg170000/SkipList.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SkipList/src/gxg170000/SkipList.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,10 +30,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
-  </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1680" />
-    <option name="height" value="1050" />
   </component>
   <component name="ProjectId" id="1RFJb20akC4Bl7jYmWAoyXqnnTC" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -85,6 +88,7 @@
       <workItem from="1569203502410" duration="254000" />
       <workItem from="1569256980639" duration="8786000" />
       <workItem from="1569279670129" duration="5000" />
+      <workItem from="1572396148539" duration="1060000" />
     </task>
     <servers />
   </component>
