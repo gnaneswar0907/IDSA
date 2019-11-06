@@ -130,7 +130,18 @@ public class MDS {
        or 0, if such an id did not exist.
     */
     public long delete(long id) {
-	return 0;
+        if(!treeMap.containsKey(id)) return 0;
+        Item item = treeMap.get(id);
+        long res = 0;
+        for(Long l: item.description){
+            table.get(l).remove(item);
+            if(table.get(l).isEmpty()){
+                table.remove(l);
+            }
+            res = res + l;
+        }
+        treeMap.remove(id);
+        return res;
     }
 
     /* 
