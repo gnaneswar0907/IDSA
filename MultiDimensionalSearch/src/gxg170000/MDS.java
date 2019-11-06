@@ -95,7 +95,14 @@ public class MDS {
                 table.get(l).add(item); // adding/replacing the item
             }
             else{
-                TreeSet<Item> newSet = new TreeSet<>();
+                TreeSet<Item> newSet = new TreeSet<Item>(new Comparator<Item>(){
+                    public int compare(Item o1, Item o2) {
+                        int result = o1.price.compareTo(o2.price);
+                        if (result == 0)
+                            return o1.id.compareTo(o2.id);
+                        return result;
+                    }
+                });
                 newSet.add(item);      // adding first element in TreeSet
                 table.put(l, newSet); //inserting the map from l to new TreeSet
             }
@@ -144,6 +151,25 @@ public class MDS {
         return res;
     }
 
+    /**
+     * Helper method: Converts money from long format to Money.
+     */
+    private Money toMoney(long m) {
+        int cents = (int) (m % 100);
+        long dollars = m / 100;
+        return new Money(dollars, cents);
+    }
+
+    /**
+     * Helper method: Converts money from Money to long format.
+     */
+    private long toLong(Money m) {
+        long money = m.dollars();
+        money = money * 100;
+        money = money + m.cents();
+        return money;
+    }
+
     /* 
        d. FindMinPrice(n): given a long int, find items whose description
        contains that number (exact match with one of the long ints in the
@@ -151,7 +177,15 @@ public class MDS {
        Return 0 if there is no such item.
     */
     public Money findMinPrice(long n) {
-	return new Money();
+        if(!table.containsKey(n)) return new Money();
+        TreeSet<Item> itemTreeSet = table.get(n);
+        Money minPrice = toMoney(Long.MAX_VALUE);
+        for(Item item: itemTreeSet){
+            if(item.price.compareTo(minPrice)<0){
+                minPrice = item.price;
+            }
+        }
+	    return minPrice;
     }
 
     /* 
@@ -160,7 +194,15 @@ public class MDS {
        Return 0 if there is no such item.
     */
     public Money findMaxPrice(long n) {
-	return new Money();
+        if(!table.containsKey(n)) return new Money();
+        TreeSet<Item> itemTreeSet = table.get(n);
+        Money maxPrice = new Money();
+        for(Item item: itemTreeSet){
+            if(item.price.compareTo(maxPrice)>0){
+                maxPrice = item.price;
+            }
+        }
+        return maxPrice;
     }
 
     /* 
@@ -169,7 +211,15 @@ public class MDS {
        their prices fall within the given range, [low, high].
     */
     public int findPriceRange(long n, Money low, Money high) {
-	return 0;
+        if (low.compareTo(high) > 0) return 0;
+        TreeSet<Item> itemTreeSet = table.get(n);
+        int count = 0;
+        for(Item item: itemTreeSet){
+            if(item.price.compareTo(low)>0 && item.price.compareTo(high)<0){
+                count++;
+            }
+        }
+	    return count;
     }
 
     /* 
@@ -178,7 +228,32 @@ public class MDS {
        prices of items.  Returns the sum of the net increases of the prices.
     */
     public Money priceHike(long l, long h, double rate) {
-	return new Money();
+        if (l > h) return new Money();
+        if (treeMap.firstKey().compareTo((Long) h) > 0) return new Money();
+        if (treeMap.lastKey().compareTo((Long) l) < 0) return new Money();
+        long netinc = 0;
+        Long startId = treeMap.ceilingKey(l);
+        Long endId = treeMap.floorKey(h);
+        if(startId.equals(endId)){
+            netinc = netinc + itemPriceHike(startId, rate);
+            return toMoney(netinc);
+        }
+        Map<Long, Item> submap = treeMap.subMap(startId,true, endId, true);
+        for(Long k : submap.keySet()){
+            netinc = netinc + itemPriceHike(k,rate);
+        }
+	    return toMoney(netinc);
+    }
+
+    /**
+     * Helper method: Increments price of Item(id) by rate%.
+     */
+    private long itemPriceHike(Long id, double rate) {
+        long currentPrice = toLong(treeMap.get(id).price);
+        long increment = (long) Math.floor((currentPrice * rate) / 100);
+        long newPrice = currentPrice + increment;
+        insert(id, toMoney(newPrice), null);
+        return increment;
     }
 
     /*
@@ -187,8 +262,19 @@ public class MDS {
       id's description.  Return the sum of the numbers that are actually
       deleted from the description of id.  Return 0 if there is no such id.
     */
-    public long removeNames(long id, java.util.List<Long> list) {
-	return 0;
+    public long removeNames(long id, List<Long> list) {
+        if(!treeMap.containsKey(id)) return 0;
+        Item item = treeMap.get(id);
+        long sum = 0;
+        for(Long l: list){
+            if(item.description.contains(l)){
+                table.get(l).remove(item);
+                if(table.get(l).isEmpty()) table.remove(l);
+                item.description.remove(l);
+                sum = sum + l;
+            }
+        }
+	    return sum;
     }
     
     // Do not modify the Money class in a way that breaks LP3Driver.java
@@ -206,7 +292,14 @@ public class MDS {
 	public long dollars() { return d; }
 	public int cents() { return c; }
 	public int compareTo(Money other) { // Complete this, if needed
-	    return 0;
+	    if(this.d < other.d) return -1;
+	    if(this.d > other.d) return 1;
+	    else{
+            if (this.c < other.c) return -1;
+            else if (this.c > other.c) return 1;
+            // same exact Money values
+            else return 0;
+        }
 	}
 	public String toString() { return d + "." + c; }
     }
