@@ -1,15 +1,15 @@
 // Starter code for SP9
 
-package idsa;
+package gxg170000;
 
-import idsa.Graph.Vertex;
-import idsa.Graph.Edge;
-import idsa.Graph.GraphAlgorithm;
-import idsa.Graph.Factory;
-import idsa.Graph.Timer;
+import gxg170000.Graph.Vertex;
+import gxg170000.Graph.Edge;
+import gxg170000.Graph.GraphAlgorithm;
+import gxg170000.Graph.Factory;
+import gxg170000.Graph.Timer;
 
-import idsa.BinaryHeap.Index;
-import idsa.BinaryHeap.IndexedHeap;
+import gxg170000.BinaryHeap.Index;
+import gxg170000.BinaryHeap.IndexedHeap;
 
 import java.util.Arrays;
 import java.util.PriorityQueue;
@@ -22,30 +22,48 @@ import java.io.File;
 
 public class MST extends GraphAlgorithm<MST.MSTVertex> {
     String algorithm;
-    public long wmst;
-    List<Edge> mst;
+    public long wmst;  // weight of MST
+    List<Edge> mst;    // stores edges in MST
     
     MST(Graph g) {
-	super(g, new MSTVertex((Vertex) null));
+		super(g, new MSTVertex((Vertex) null));
     }
 
     public static class MSTVertex implements Index, Comparable<MSTVertex>, Factory {
-	
-	MSTVertex(Vertex u) {
-	}
+    	boolean seen; // flag to check if the vertex is visited or not
+    	Vertex parent; // to keep track of the vertex through which current vertex was found
+		int d; // to save the distance
+		int index; //for the index in indexed heap
+		Vertex origVertex; // reference to the original Vertex
+		Edge incidentEdge; // Edge reaching out to this MSTVertex
 
-	MSTVertex(MSTVertex u) {  // for prim2
-	}
+		// Constructing MSTVertex out of a Vertex
+		MSTVertex(Vertex u) {
+			this.seen = false;
+			this.parent = null;
+			this.d = Integer.MAX_VALUE; // setting the distance to max value
+			this.index = 0;
+			this.origVertex = u;
+			this.incidentEdge = null;
+		}
 
-	public MSTVertex make(Vertex u) { return new MSTVertex(u); }
+		MSTVertex(MSTVertex u) {  // for prim2
+		}
 
-	public void putIndex(int index) { }
+		public MSTVertex make(Vertex u) { return new MSTVertex(u); }
 
-	public int getIndex() { return 0; }
+		public void putIndex(int index) {
+			this.index = index;
+		}
 
-	public int compareTo(MSTVertex other) {
-	    return 0;
-	}
+		public int getIndex() { return this.index; }
+
+		//Ordering MSTVertices on the distance attribute.
+		public int compareTo(MSTVertex other) {
+			if(other == null || this.d > other.d) return 1;
+			else if(this.d<other.d) return -1;
+			else return 0;
+		}
     }
 
     public long kruskal() {
@@ -56,12 +74,43 @@ public class MST extends GraphAlgorithm<MST.MSTVertex> {
         return wmst;
     }
 
+	// Prim's MST Algorithm - Take 3: using Indexed Binary Heap
     public long prim3(Vertex s) {
-	algorithm = "indexed heaps";
-        mst = new LinkedList<>();
-	wmst = 0;
-	IndexedHeap<MSTVertex> q = new IndexedHeap<>(g.size());
-	return wmst;
+		algorithm = "Prim using indexed heap";
+		mst = new LinkedList<>();
+		wmst = 0;
+		IndexedHeap<MSTVertex> q = new IndexedHeap<>(g.size());
+		// Initialization
+		for(Vertex v:g.getVertexArray()){
+			get(v).seen = false;
+			get(v).parent = null;
+			get(v).d = Integer.MAX_VALUE;
+			get(v).putIndex(v.getIndex());
+		}
+		get(s).d = 0;
+
+		// Indexed Heap q will always have all the vertices almost all the time.
+		for(Vertex v:g.getVertexArray()) q.add(get(v));
+
+		while(!q.isEmpty()){
+			MSTVertex u = q.remove();  // returning the top index from queue
+			u.seen = true;
+			wmst = wmst + u.d;
+
+			// Adding edge to the MST
+			if(u.parent !=null) mst.add(u.incidentEdge);
+
+			for(Edge e: g.incident(u.origVertex)){
+				Vertex v = e.otherEnd(u.origVertex);
+				if(!get(v).seen && (e.getWeight()<get(v).d)){
+					get(v).d = e.getWeight();
+					get(v).parent = u.origVertex;
+					get(v).incidentEdge = e; // edge reaching out to MSTVertex get(v)
+					q.decreaseKey(get(v)); // percolateUp(MSTVertex v), if needed
+				}
+			}
+		}
+		return wmst;
     }
 
     public long prim2(Vertex s) {
