@@ -22,7 +22,7 @@ jobs:
     - name: Run a one-line script
       run: echo Hello $name from first job!
   pull_requests_only:
-    if: github.event_name == "pull_request"
+    if: github.event_name == 'pull_request'
     needs: [build]
 
     runs-on: ubuntu-latest
