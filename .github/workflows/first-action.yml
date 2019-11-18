@@ -1,6 +1,14 @@
 name: First Action
 
-on: [push]
+on:
+  push:
+    branches: 
+      - master
+      - build
+  pull_request:
+    types: [closed]
+  schedule:
+    - cron: "0.2 ** 1-5"
 
 jobs:
   build:
