@@ -9,16 +9,26 @@ on:
   schedule:
   - cron: "0 2 * * 1-5"
 
+env:
+  name: ashish
 jobs:
   build:
 
     runs-on: ubuntu-latest
+    env:
+      name: gnaneswar
 
     steps:
-    - uses: actions/checkout@v1
     - name: Run a one-line script
-      run: echo Hello, world!
+      run: echo Hello $name from first job!
+  pull_requests_only:
+    if: github.event_name == "pull_request"
+    needs: [build]
+
+    runs-on: ubuntu-latest
+
+    steps:
     - name: Run a multi-line script
       run: |
-        echo Add other actions to build,
+        echo Helo from second job $name,
         echo test, and deploy your project.
