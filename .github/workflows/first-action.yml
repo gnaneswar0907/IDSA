@@ -16,7 +16,7 @@ jobs:
 
     runs-on: ubuntu-latest
     env:
-      name: gnaneswar
+      name: gnaneswar_g
 
     steps:
     - name: Run a one-line script
