@@ -32,6 +32,18 @@ jobs:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
         run: echo "$GITHUB_CONTEXT"
   
+  weather:
+    runs-on: [ubuntu-latest]
+    env:
+      location: '32.993930,-96.792560'
+      language: en
+      units: us
+      exclude: 'minutely,hourly,daily,alerts,flags'
+      dark_sky_secret: ${{ secret.DARK_SKY }}
+    steps:
+      - name: Current Weather
+        run: curl -s --url https://api.darksky.net/forecast/$dark_sky_secret/$location?lang=$lang&units=$units&exclude=$exclude
+  
   
   pull_requests_only:
     if: github.event_name == 'pull_request'
