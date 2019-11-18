@@ -20,7 +20,19 @@ jobs:
 
     steps:
     - name: Run a one-line script
-      run: echo Hello $name from first job!
+      run: |
+            echo Hello $name from first job!
+            echo Actor: ${{ github.actor }}
+            echo Comitted By:: ${{ github.event.commits[0].author.name }}
+  
+  dump:
+    runs-on: [ubuntu-latest]
+    steps:
+      - env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
+  
+  
   pull_requests_only:
     if: github.event_name == 'pull_request'
     needs: [build]
