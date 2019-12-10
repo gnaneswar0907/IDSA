@@ -1,8 +1,8 @@
 // Driver code for max flow
-package idsa;
-import idsa.Graph;
-import idsa.Graph.Edge;
-import idsa.Graph.Vertex;
+package gxg170000;
+import gxg170000.Graph.*;
+import gxg170000.Graph.Edge;
+import gxg170000.Graph.Vertex;
 import java.util.HashMap;
 
 
@@ -26,7 +26,7 @@ public class maxFlowDriver {
 	    arr[i] = cap;
 	}
 	for(Vertex u: g) {
-	    for(Edge e: u) {
+	    for(Edge e: g.incident(u)) {
 		capacity.put(e, arr[e.getName()]);
 	    }
 	}
@@ -41,7 +41,7 @@ public class maxFlowDriver {
 	if(VERBOSE > 0) {
 	    for(Vertex u: g) {
 		System.out.print(u + " : ");
-		for(Edge e: u) {
+		for(Edge e: g.incident(u)) {
 		    System.out.print(e + ":" + f.flow(e) + "/" + f.capacity(e) + " | ");
 		}
 		System.out.println();

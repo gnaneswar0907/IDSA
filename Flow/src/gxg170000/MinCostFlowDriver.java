@@ -1,8 +1,7 @@
 
 // Test driver for mincost flow
-package idsa;
-import idsa.Graph.*;
-import Timer;
+package gxg170000;
+import gxg170000.Graph.*;
 
 import java.util.HashMap;
 import java.util.Scanner;
@@ -35,7 +34,7 @@ public class MinCostFlowDriver {
 	Vertex target = g.getVertex(t);
 
 	for(Vertex u: g) {
-	    for(Edge e: u) {
+	    for(Edge e: g.incident(u)) {
 		capacity.put(e, arr[e.getName()]);
 		cost.put(e, e.getWeight());
 	    }
@@ -45,14 +44,14 @@ public class MinCostFlowDriver {
 	Timer timer = new Timer();
 	MinCostFlow mcf = new MinCostFlow(g, src, target, capacity, cost);
 	
-	int result = mcf.costScalingMinCostFlow(d);
+	int result = mcf.costScalingMinCostFlow(1);
 	
 	System.out.println(result);
 
 	if(VERBOSE > 0) {
 	    for(Vertex u: g) {
 		System.out.print(u + " : ");
-		for(Edge e: u) {
+		for(Edge e: g.incident(u)) {
 		    if(mcf.flow(e) != 0) { System.out.print(e + ":" + mcf.flow(e) + "/" + mcf.capacity(e) + "@" + mcf.cost(e) + "| "); }
 		}
 		System.out.println();
